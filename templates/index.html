@@ -1,8 +1,8 @@
 <head>
     <script>
-        let ws;
+        var ws;
         function myFunction(){
-            ws = new WebSocket("ws://localhost:5000/echo_action");
+            ws = new WebSocket("ws://127.0.0.1:8000/WebSocketHome/actions");
 
             ws.onopen = function(){
                 console.log("ok");
@@ -15,12 +15,12 @@
             }
 
             ws.onmessage = function(evt){
-                let para = document.createElement("p");
+                var para = document.createElement("p");
                 para.style.display = "flex";
                 para.innerHTML = ">"+evt.data;
                 document.getElementById("chat").appendChild(para);
             }
-        }
+        } 
 
         function sendText(text){
             ws.send(text);

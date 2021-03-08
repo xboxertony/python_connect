@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 sockets = Sockets(app)
 
-@sockets.route("/echo_action")
+@sockets.route("/WebSocketHome/actions")
 def echo_socket(ws):
     while True:
         message = ws.receive()
@@ -13,10 +13,13 @@ def echo_socket(ws):
             ws.send("歡迎使用客服機器人")
         else:
             ws.send(message)
+@app.route("/")
+def home():
+    return "hello"
 
 @app.route("/echo_test",methods = ["GET"])
 def echo_test():
     return render_template("index.html")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True,port=8000)
