@@ -17,7 +17,7 @@ def echo_socket(ws):
         if(message=="socket open"):
             ws.send("歡迎使用客服機器人")
         elif(message=="photo"):
-            ws.send("請幫我")
+            ws.send("請幫我我我我")
         else:
             ws.send(message)
 @app.route("/")
@@ -29,7 +29,7 @@ def echo_test():
     return render_template("index.html")
 
 def run_server():
-    server = pywsgi.WSGIServer(('', 3000), app, handler_class=WebSocketHandler)
+    server = pywsgi.WSGIServer(('0.0.0.0', 3000), app, handler_class=WebSocketHandler)
     server.serve_forever()
 
 if __name__=="__main__":
