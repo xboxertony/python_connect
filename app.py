@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 sockets = Sockets(app)
 
-cors = CORS(app)
+cors = CORS(app,resources={r"/*": {"origins": "*"}})
 
 @sockets.route("/actions")
 def echo_socket(ws):
