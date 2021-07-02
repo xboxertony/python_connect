@@ -20,7 +20,7 @@ def echo_socket(ws):
         if(message=="socket open"):
             ws.send("歡迎使用客服機器人")
         elif(message=="photo"):
-            ws.send("請幫我我我我")
+            ws.send("請幫我")
         else:
             ws.send(message)
 @app.route("/")
