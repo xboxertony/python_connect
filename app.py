@@ -29,7 +29,7 @@ def echo_test():
     return render_template("index.html")
 
 def run_server():
-    server = pywsgi.WSGIServer(('0.0.0.0', 3000), app, handler_class=WebSocketHandler)
+    server = pywsgi.WSGIServer(('', 3000), app, handler_class=WebSocketHandler)
     server.serve_forever()
 
 if __name__=="__main__":
