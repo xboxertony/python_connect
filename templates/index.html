@@ -1,4 +1,47 @@
 <head>
+    <style>
+        #lname{
+            position:fixed;
+        }
+        input[type="submit"]{
+            position: fixed;
+        }
+        .para{
+            justify-content: flex-end;
+            margin: 30px 0;
+        }
+        #chat{
+            width: 50%;
+            margin-left: 40%;
+            background-color: #ccc;
+            height: fit-content;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 50px;
+        }
+        .chat_box{
+            position: relative;
+        }
+        .chat_box::after{
+            position: absolute;
+            content: attr(data-name);
+            border-radius: 10px;
+        }
+        .para::after{
+            top: -40px;
+            right: -50px;
+            background-color: #166FF0;
+            padding: 10px;
+            color: white;
+        }
+        .user::after{
+            top: -40px;
+            left: -60px;
+            background-color: antiquewhite;
+            padding: 10px;
+            color: black;
+        }
+    </style>
 </head>
 <body>
     <h1>與機器人聊天</h1>
@@ -30,14 +73,26 @@
             ws.onmessage = function(evt){
                 var para = document.createElement("p");
                 para.style.display = "flex";
-                para.innerHTML = ">"+evt.data;
+                para.innerHTML = evt.data;
+                para.dataset.name = "客服"
+                para.classList.add("para")
+                para.classList.add("chat_box")
                 document.getElementById("chat").appendChild(para);
+                window.scrollTo(0,document.body.scrollHeight)
+                console.log(document.body.scrollHeight)
             }
         } 
 
         myFunction()
 
         function sendText(text){
+            var para = document.createElement("p");
+            para.style.display = "flex";
+            para.innerHTML = text;
+            para.classList.add("user")
+            para.classList.add("chat_box")
+            para.dataset.name="使用者"
+            document.getElementById("chat").appendChild(para)
             ws.send(text);
         }
     </script>

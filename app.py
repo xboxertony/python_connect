@@ -3,14 +3,15 @@ from flask_sockets import Sockets
 from gevent import pywsgi
 from geventwebsocket.handler import WebSocketHandler
 from werkzeug.serving import run_with_reloader
-from flask_cors import CORS
+# from flask_cors import CORS
 
 
 app = Flask(__name__)
+app.debug=True
 
 sockets = Sockets(app)
 
-cors = CORS(app,resources={r"/*": {"origins": "*"}})
+# cors = CORS(app,resources={r"/*": {"origins": "*"}})
 
 @sockets.route("/actions")
 def echo_socket(ws):
