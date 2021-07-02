@@ -87,6 +87,13 @@
   {% block content %}{% endblock %}
   <div class="copyright">Copyright &copy; 2021 台北一日遊</div>
   <i class="fas fa-chevron-circle-up" id="up_page"></i>
+  <script>
+    let up_page = document.getElementById("up_page")
+
+    up_page.addEventListener("click",function(){
+      window.scrollTo(0,0)
+    })
+  </script>
 </body>
 <!-- <script>
   let src = '{{session.get("url")}}';
