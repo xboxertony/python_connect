@@ -2,7 +2,7 @@
     <script>
         var ws;
         function myFunction(){
-            ws = new WebSocket("ws://127.0.0.1:8000/WebSocketHome/actions");
+            ws = new WebSocket("ws://localhost:3000/actions");
 
             ws.onopen = function(){
                 console.log("ok");
@@ -22,6 +22,8 @@
             }
         } 
 
+        myFunction()
+
         function sendText(text){
             ws.send(text);
         }
@@ -36,7 +38,6 @@
         </span>
     </div>
 
-    <button type="button" onclick="myFunction()">點我聊天</button>
     <input type="text" id="lname" name="lname"><br><br>
     <input type="submit" value="Submit" onclick="sendText(document.getElementById('lname').value)">
 
