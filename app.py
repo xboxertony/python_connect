@@ -6,7 +6,6 @@ from werkzeug.serving import run_with_reloader
 
 
 app = Flask(__name__)
-app.debug=True
 
 sockets = Sockets(app)
 
