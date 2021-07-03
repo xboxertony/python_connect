@@ -94,12 +94,12 @@
 <script>
   var ws;
   function myFunction() {
-    ws = new WebSocket("ws://13.114.115.122:3000//actions");
+    ws = new WebSocket("ws://"+"{{host}}"+"//actions");
 
     ws.onopen = function () {
       //   console.log("ok");
       //   document.getElementById("conn_status").style.display = "flex";
-      ws.send("socket open");
+      ws.send(JSON.stringify({"ok":"socket open"}));
     };
 
     ws.onclose = function (evt) {
@@ -107,6 +107,7 @@
     };
 
     ws.onmessage = function (evt) {
+      console.log(evt)
       var para = document.createElement("p");
       para.style.display = "flex";
       para.innerHTML = evt.data;
@@ -124,12 +125,12 @@
   function sendText(text) {
     var para = document.createElement("p");
     para.style.display = "flex";
-    para.innerHTML = text;
+    para.innerHTML = text
     para.classList.add("user");
     para.classList.add("chat_box");
     para.dataset.name = "使用者";
     document.getElementById("chat").appendChild(para);
-    ws.send(text);
+    ws.send(JSON.stringify({"ok":text}));
   }
 </script>
 {% endblock %}
