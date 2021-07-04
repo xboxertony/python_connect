@@ -43,12 +43,26 @@
     padding: 10px;
     color: white;
   }
+  .para::before{
+    position: absolute;
+    content:attr(data-time);
+    top: 10px;
+    right: -50px;
+    font-size: 5px;
+  }
   .user::after {
     top: -40px;
     left: -60px;
     background-color: antiquewhite;
     padding: 10px;
     color: black;
+  }
+  .user::before{
+    position: absolute;
+    content:attr(data-time);
+    top: 10px;
+    left: -50px;
+    font-size: 5px;
   }
   .question_center {
     padding: 30px;
@@ -139,6 +153,7 @@
       para.style.display = "flex";
       para.innerHTML = evt.data;
       para.dataset.name = "客服";
+      para.dataset.time = get_time()
       para.classList.add("para");
       para.classList.add("chat_box");
       document.getElementById("chat").appendChild(para);
@@ -149,12 +164,18 @@
 
   myFunction();
 
+  function get_time(){
+    let current_time = new Date()
+    return `${current_time.getHours()<10?"0"+current_time.getHours():current_time.getHours()}:${current_time.getMinutes()<10?"0"+current_time.getMinutes():current_time.getMinutes()}:${current_time.getSeconds()<10?"0"+current_time.getSeconds():current_time.getSeconds()}`
+  }
+
   function sendText(text) {
     var para = document.createElement("div");
     para.innerHTML = text
     para.classList.add("user");
     para.classList.add("chat_box");
     para.dataset.name = "使用者";
+    para.dataset.time = get_time()
     document.getElementById("chat").appendChild(para);
     ws.send(JSON.stringify({"ok":text}));
     document.getElementById('lname').innerHTML = ""
