@@ -24,6 +24,7 @@ def echo_socket(ws):
     while True:
         message = ws.receive()
         mes = json.loads(message)
+        print(mes)
         res = question(mes)
         ws.send(res)
 @app.route("/")

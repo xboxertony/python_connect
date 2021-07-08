@@ -39,7 +39,7 @@ function sendText(text) {
   para.innerHTML = text
   para.classList.add("user");
   para.classList.add("chat_box");
-  para.dataset.name = "使用者";
+  para.dataset.name = "user";
   para.dataset.time = get_time()
   document.getElementById("main_chat").appendChild(para);
   ws.send(JSON.stringify({"ok":text}));
