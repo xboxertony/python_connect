@@ -82,7 +82,7 @@ input[type="submit"] {
   content: attr(data-time);
   top: 10px;
   left: -50px;
-  font-size: 5px;
+  font-size: 13px;
 }
 .question_center {
   padding: 30px;
