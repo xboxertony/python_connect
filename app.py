@@ -5,6 +5,7 @@ from geventwebsocket.handler import WebSocketHandler
 from werkzeug.serving import run_with_reloader
 from flask_cors import CORS
 import config
+from question import question
 
 # import logging
 # logger = logging.getLogger(__name__)
@@ -23,12 +24,8 @@ def echo_socket(ws):
     while True:
         message = ws.receive()
         mes = json.loads(message)
-        if(mes.get("ok")=="socket open"):
-            ws.send("歡迎使用客服機器人")
-        elif(mes.get("ok")=="photo"):
-            ws.send("請幫我")
-        else:
-            ws.send("請問有甚麼問題呢?")
+        res = question(mes)
+        ws.send(res)
 @app.route("/")
 def home():
     return "hello"

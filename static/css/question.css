@@ -1,0 +1,125 @@
+/* #lname {
+    position: fixed;
+  } */
+input[type="submit"] {
+  /* top: 200px; */
+  /* position: fixed; */
+  padding: 10px;
+  float: right;
+  background-color: #23daf3;
+  color: black;
+  width: 100px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.para {
+    margin: 30px 0;
+    text-align: end;
+}
+#header_title{
+    text-align: center;
+    background-color: #27AE58;
+    border-radius: 10px 10px 0 0;
+    padding: 20px;
+    font-weight: 800;
+}
+#main_title{
+    color: white;
+}
+#chat {
+  margin-left: 60px;
+  height: fit-content;
+  border-radius: 10px 10px 0 0;
+  margin-bottom: 50px;
+  background-color: #ECF2EC;
+}
+#main_chat{
+    padding: 30px 100px;
+    overflow-y: scroll;
+    height: 300px;
+    scroll-behavior: smooth;
+}
+.chat_box {
+  position: relative;
+  font-weight: 800;
+  min-height: 21px;
+  margin-bottom: 50px;
+  padding: 5px;
+}
+.chat_box::after {
+  position: absolute;
+  content: attr(data-name);
+  border-radius: 10px;
+}
+.para::after {
+  top: -40px;
+  right: -50px;
+  background-color: #166ff0;
+  padding: 10px;
+  color: white;
+}
+.para::before {
+  position: absolute;
+  content: attr(data-time);
+  top: 10px;
+  right: -50px;
+  font-size: 5px;
+}
+.user::after {
+  top: -40px;
+  left: -60px;
+  background-color: antiquewhite;
+  padding: 10px;
+  color: black;
+}
+.user::before {
+  position: absolute;
+  content: attr(data-time);
+  top: 10px;
+  left: -50px;
+  font-size: 5px;
+}
+.question_center {
+  padding: 30px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+#question_message {
+  align-self: flex-end;
+}
+#lname {
+  width: 500px;
+  height: fit-content;
+  background-color: #394249;
+  color: white;
+  border: 2px solid white;
+  overflow-y: auto;
+  height: 200px;
+}
+#lname:focus {
+  border: 2px solid white;
+}
+@media screen and (max-width: 1200px) {
+  .question_center {
+    flex-direction: column;
+  }
+  #question_message {
+    position: relative;
+    margin: auto;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+  #chat {
+    margin-left: auto;
+    margin: auto;
+  }
+  #lname {
+    width: auto;
+  }
+  input[type="submit"] {
+    align-self: flex-end;
+  }
+}
