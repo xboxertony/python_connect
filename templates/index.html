@@ -1,5 +1,14 @@
 {% extends "model.html" %} {% block style%}
 <link rel="stylesheet" href="../static/css/question.css">
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script
+  src="https://unpkg.com/react@17/umd/react.development.js"
+  crossorigin
+></script>
+<script
+  src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+  crossorigin
+></script>
 {% endblock %} {% block content%}
 <div class="question_center">
   <!-- <div id="conn_status" style="display: none">
@@ -33,4 +42,50 @@
   let host = '{{host}}'
 </script>
 <script src="../static/js/question.js"></script>
+<script type="text/babel">
+  let MutationObserver = window.MutationObserver
+  let config = { 
+    attributes: true,
+    childList: true, 
+    characterData: true, 
+    subtree: true
+ };
+  let DocumentObserver = new MutationObserver(function(){
+    let content = document.getElementsByClassName("root")
+    if(content.length>0){
+      let len = content.length
+      ReactDOM.render(<Mention />,content[len-1]);
+    }
+  }) 
+  DocumentObserver.observe(document.getElementById("main_chat"),config);
+  class Item extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+    render() {
+      const { word } = this.props;
+      return <p className="word_decorate"><i className='fas fa-clipboard'></i>{word}</p>;
+    }
+  }
+  class Mention extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        0: "退款請由會員中心進入後，可從歷史訂單旁的退款鈕進行退款",
+        1: "退款皆全額退款",
+        2: "出發時間三天內的訂單不得退款"
+      };
+    }
+    make_array() {
+      let arr = [];
+      for (let i = 0; i < Object.keys(this.state).length; i++) {
+        arr.push(<Item word={this.state[i]} key={this.state[i]}/>);
+      }
+      return arr;
+    }
+    render() {
+      return this.make_array();
+    }
+  }
+</script>
 {% endblock %}

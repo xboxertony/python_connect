@@ -22,7 +22,7 @@ function myFunction() {
     para.classList.add("para");
     para.classList.add("chat_box");
     document.getElementById("main_chat").appendChild(para);
-    document.getElementById("main_chat").scrollTo(0,document.getElementById("main_chat").scrollHeight-500);
+    document.getElementById("main_chat").scrollTo(0,document.getElementById("main_chat").scrollHeight-400);
     console.log(document.body.scrollHeight);
   };
 }
