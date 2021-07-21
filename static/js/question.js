@@ -1,7 +1,7 @@
 var ws;
 document.getElementById("lname").focus()
 function myFunction() {
-  ws = new WebSocket("ws://localhost:3000/actions");
+  ws = new WebSocket("ws://"+window.location.host+"/actions");
 
   ws.onopen = function () {
     //   console.log("ok");
