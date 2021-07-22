@@ -51,13 +51,20 @@
     subtree: true
  };
   let DocumentObserver = new MutationObserver(function(){
+    console.log("有變化")
     let content = document.getElementsByClassName("root")
+    let messgae_root = document.getElementsByClassName("messgae_root")
     if(content.length>0){
       let len = content.length
       ReactDOM.render(<Mention />,content[len-1]);
+    }
+    if(messgae_root.length>0){
+      let len_mes = messgae_root.length
+      ReactDOM.render(<Message />,messgae_root[len_mes-1])
     }
   }) 
   DocumentObserver.observe(document.getElementById("main_chat"),config);
 </script>
 <script src="../static/js/refund.js" type="text/babel"></script>
+<script src="../static/js/message.js" type="text/babel"></script>
 {% endblock %}

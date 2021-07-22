@@ -10,5 +10,7 @@ def question(keyword_dic):
         return render_template("member_board.html")
     elif("退款" in keyword_dic.get('ok')):
         return render_template('refund.html')
+    elif("留言" in keyword_dic.get('ok')):
+        return render_template('message.html')
     else:
         return "請問有甚麼問題呢"

@@ -115,7 +115,7 @@ input[type="submit"] {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 100%;
   }
   #chat {
     margin-left: auto;

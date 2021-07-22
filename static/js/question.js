@@ -14,7 +14,6 @@ function myFunction() {
   };
 
   ws.onmessage = function (evt) {
-    console.log(evt)
     var para = document.createElement("div");
     para.innerHTML = evt.data;
     para.dataset.name = "客服";
